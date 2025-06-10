@@ -118,7 +118,7 @@ The two years compared in the study are 2016 and 2019, which were subsequent bre
 
 | Model number | Season | Distance to Forest Edge | Model Description | 
 |:------------:|:---:|:---------------:|:-------:|-----------------------------|  
-| 0            |        |                          | no predictors (null model) |
-| 1            |  X     |       X                 | all predictors (saturated model) | 
+| 0            |        |                          | No predictors (null model) |
+| 1            |  X     |       X                 | All predictors (saturated model) | 
 | 2            |  X     |                         | Season |   
 | 3            |       |       X                  | Distance to Forest Edge |  
