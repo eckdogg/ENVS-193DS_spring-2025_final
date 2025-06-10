@@ -37,6 +37,8 @@ sst <- read_csv(here("data", "SST_update2023.csv"))
 
 ## Problem 2. Data visualization
 
+## a.
+
 ```{r}
 sst_clean <- sst |>
   mutate(date = ymd(date),
@@ -51,5 +53,54 @@ sst_clean |>
   slice_sample(n = 5)
 
 str(sst_clean)
+```
+
+## b.
+
+```{r}
+ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = year)) +
+  geom_line(size = 0.8) +
+  geom_point(size = 1.5) +
+  labs(
+    x = "Month",
+    y = "Mean monthly sea surface temperature (°C)",
+    color = "Year"
+  ) +
+  scale_color_manual(
+    values = c(
+      "2018" = "#deebf7",  
+      "2019" = "#c6dbef",
+      "2020" = "#9ecae1",
+      "2021" = "#6baed6",
+      "2022" = "#3182bd",
+      "2023" = "#08519c"   
+    )
+  ) +
+  scale_y_continuous(limits = c(12, 20)) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "left",
+    plot.margin = margin(t = 10, r = 10, b = 10, l = 30),
+    axis.title.y = element_text(margin = margin(r = 10)),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank()
+  ) +
+  theme_minimal(base_size = 14) +
+theme(
+  legend.position = "left",
+  plot.margin = margin(t = 10, r = 10, b = 10, l = 30),
+  axis.title.y = element_text(margin = margin(r = 10)),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(),
+  panel.background = element_blank(),
+  panel.border = element_rect(color = "black", fill = NA, linewidth = 0.5)
+) +
+     theme(
+    legend.position = c(0.00, 1.04),  # x = 0% from left, y = 104% from bottom
+    legend.justification = c("left", "top"),  
+  )
+```
+
 ```
 
