@@ -1,5 +1,5 @@
 ---
-title: " ENVS193DS Final"
+title: "ENVS193DS Final"
 author: Owen Eckweiler
 date: 6/10/2025
 editor: source
@@ -29,14 +29,14 @@ nest_boxes <- read_csv(here("data", "occdist.csv"))
 ```
 
 
-## Problem 1. Research writing
+# Problem 1. Research writing
 
 ## a. In part 1, they used a Pearson's r correlation test. In part 2, they used a one-way ANOVA test.
 
 ## b. 
 
 
-## Problem 2. Data visualization
+# Problem 2. Data visualization
 
 ## a.
 
@@ -98,7 +98,7 @@ theme(
   panel.border = element_rect(color = "black", fill = NA, linewidth = 0.5)
 ) +
      theme(
-    legend.position = c(0.00, 1.04),  # x = 0% from left, y = 104% from bottom
+    legend.position = c(0.00, 1.00),  # x = 0% from left, y = 100% from bottom
     legend.justification = c("left", "top"),  
   )
 ```
