@@ -41,67 +41,53 @@ nest_boxes <- read_csv(here("data", "occdist.csv"))
 ## a.
 
 ```{r}
-sst_clean <- sst |>
-  mutate(date = ymd(date),
-         year = factor(year(date), levels = 2018:2023),
-         month = month(date, label = TRUE, abbr = TRUE)) |>
-  filter(!is.na(year)) |>
-  group_by(year, month) |>
+sst_clean <- sst |> # cleaning data from sst data frame
+  mutate(date = ymd(date), # creating date objects
+         year = factor(year(date), levels = 2018:2023), # turning year variable into a factor
+         month = month(date, label = TRUE, abbr = TRUE)) |> # creating a month column
+  filter(!is.na(year)) |> # filtering out rows without a year value
+  group_by(year, month) |> # grouping by year and month
   summarize(mean_monthly_sst = round(mean(temp, na.rm = TRUE), 1),
-            .groups = "drop")
+            .groups = "drop") # taking the mean sst for each month
 
 sst_clean |> 
-  slice_sample(n = 5)
+  slice_sample(n = 5) # displaying 5 random rows of data
 
-str(sst_clean)
+str(sst_clean) # displaying the data structure
 ```
 
 ## b.
 
 ```{r}
-ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = year)) +
-  geom_line(size = 0.8) +
-  geom_point(size = 1.5) +
-  labs(
-    x = "Month",
-    y = "Mean monthly sea surface temperature (°C)",
-    color = "Year"
+ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = year)) + # using sst_clean data frame and setting values
+  geom_line(size = 0.8) + # line geometry
+  geom_point(size = 1.5) + # point geometry
+  labs( # setting axis labels
+    x = "Month", # x axis label
+    y = "Mean monthly sea surface temperature (°C)", # y axis label
+    color = "Year" # coloring based on year
   ) +
-  scale_color_manual(
+  scale_color_manual( # manually setting color scale
     values = c(
-      "2018" = "#deebf7",  
-      "2019" = "#c6dbef",
-      "2020" = "#9ecae1",
-      "2021" = "#6baed6",
-      "2022" = "#3182bd",
-      "2023" = "#08519c"   
+      "2018" = "#deebf7", # color for 2018 (lightest blue)
+      "2019" = "#c6dbef", # color for 2019
+      "2020" = "#9ecae1", # color for 2020
+      "2021" = "#6baed6", # color for 2021
+      "2022" = "#3182bd", # color for 2022
+      "2023" = "#08519c"  # color for 2023 (darkest blue)
     )
   ) +
-  scale_y_continuous(limits = c(12, 20)) +
-  theme_minimal(base_size = 14) +
+  scale_y_continuous(limits = c(12, 20)) + # only displaying values between 12 and 20 on y axis
+  theme_minimal(base_size = 14) + # setting base font size to 14 points
   theme(
-    legend.position = "left",
-    plot.margin = margin(t = 10, r = 10, b = 10, l = 30),
-    axis.title.y = element_text(margin = margin(r = 10)),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank()
-  ) +
-  theme_minimal(base_size = 14) +
-theme(
-  legend.position = "left",
-  plot.margin = margin(t = 10, r = 10, b = 10, l = 30),
-  axis.title.y = element_text(margin = margin(r = 10)),
-  panel.grid.major = element_blank(),
-  panel.grid.minor = element_blank(),
-  panel.background = element_blank(),
-  panel.border = element_rect(color = "black", fill = NA, linewidth = 0.5)
-) +
-     theme(
-    legend.position = c(0.00, 1.00),  # x = 0% from left, y = 100% from bottom
-    legend.justification = c("left", "top"),  
+    legend.position = c(0.00, 1.00),  # setting legend position
+    legend.justification = c("left", "top"),  # pin legend to top-left
+    plot.margin = margin(t = 10, r = 10, b = 10, l = 30), # setting plot margin
+    axis.title.y = element_text(margin = margin(r = 10)), # setting margin for y axis
+    panel.grid.major = element_blank(),  # removing major gridlines
+    panel.grid.minor = element_blank(),  # removing minor gridlines
+    panel.background = element_blank(),  # removing background
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 0.5)  # setting border color and size
   )
-```
-
 ```
 
