@@ -1,0 +1,38 @@
+---
+title: " ENVS193DS Final"
+author: Owen Eckweiler
+date: 6/10/2025
+editor: source
+format:
+  html:
+    toc: true # use this to display a table of contents
+execute:
+  message: false # use this to make sure messages don't show up
+  warning: false # use this to make sure warnings don't show up
+---
+
+# Repository Link
+
+<https://github.com/eckdogg/ENVS-193DS_spring-2025_final.git>
+
+
+# Set up
+
+```{r}
+library("tidyverse")
+library("here")
+library("janitor")
+
+sst <- read_csv(here("data", "SST_update2023.csv"))
+```
+
+
+## Problem 1. Research writing
+
+## a. In part 1, they used a Pearson's r correlation test. In part 2, they used a one-way ANOVA test.
+
+## b. 
+
+
+## Problem 2. Data visualization
+
