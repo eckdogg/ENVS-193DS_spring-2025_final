@@ -109,3 +109,7 @@ A 1 represents the presence of a species and a 0 represents the absence of a spe
 ## b.
 
 In this study, the nest boxes were built for Swift Parrot habitat restoration. However in the location where the nest boxes were built there are two other species that compete with Swift Parrots for nest boxes (Tree Martins and Common Starlings).
+
+## c.
+
+The two years compared in the study are 2016 and 2019, which were subsequent breeding seasons. Nest boxes were originally established in 2016 and were used again in 2019. 
