@@ -22,6 +22,7 @@ execute:
 library("tidyverse")
 library("here")
 library("janitor")
+library("tibble")
 
 sst <- read_csv(here("data", "SST_update2023.csv"))
 ```
@@ -35,4 +36,20 @@ sst <- read_csv(here("data", "SST_update2023.csv"))
 
 
 ## Problem 2. Data visualization
+
+```{r}
+sst_clean <- sst |>
+  mutate(date = ymd(date),
+         year = factor(year(date), levels = 2018:2023),
+         month = month(date, label = TRUE, abbr = TRUE)) |>
+  filter(!is.na(year)) |>
+  group_by(year, month) |>
+  summarize(mean_monthly_sst = round(mean(temp, na.rm = TRUE), 1),
+            .groups = "drop")
+
+sst_clean |> 
+  slice_sample(n = 5)
+
+str(sst_clean)
+```
 
