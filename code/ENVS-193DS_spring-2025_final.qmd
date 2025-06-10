@@ -113,3 +113,12 @@ In this study, the nest boxes were built for Swift Parrot habitat restoration. H
 ## c.
 
 The two years compared in the study are 2016 and 2019, which were subsequent breeding seasons. Nest boxes were originally established in 2016 and were used again in 2019. 
+
+## d.
+
+| Model number | Season | Distance to Forest Edge | Model Description | 
+|:------------:|:---:|:---------------:|:-------:|-----------------------------|  
+| 0            |        |                          | no predictors (null model) |
+| 1            |  X     |       X                 | all predictors (saturated model) | 
+| 2            |  X     |                         | Season |   
+| 3            |       |       X                  | Distance to Forest Edge |  
