@@ -39,6 +39,11 @@ In part 1, they used a Pearson's r correlation test. In part 2, they used a one-
 
 Two additional tests that could be included are a Tukey's HSD test and an eta-squared test. Tukey's HSD will tell us what groups are significantly different from each other. In this example there are 5 groups (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands). An eta-squared test will give us the effect size between groups. Effect size will tell us how large the difference is between groups. 
 
+## c.
+
+We rejected the null hypothesis that there is no difference in average nitrogen load (kg year<sup>-1</sup>) between sources (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (p = 0.02). We found a large difference ($\eta^2$ = effect size) between sources in average nitrogen load (one-way ANOVA results). On average urban land tended to have larger nitrogen loads than atmospheric deposition (Tukey's HSD results), fertilizer (Tukey's HSD results), fertilizer (Tukey's HSD results), wastewater treatment (Tukey's HSD results), and grasslands (Tukey's HSD results).
+
+
 # Problem 2. Data visualization
 
 ## a.
@@ -94,3 +99,13 @@ ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = yea
   )
 ```
 
+
+# Problem 3. Data analysis
+
+## a.
+
+A 1 represents the presence of a species and a 0 represents the absence of a species. For example a 1 underneath the sp column represents the presence of a swift parrot in a nest box.
+
+## b.
+
+In this study, the nest boxes were built for Swift Parrot habitat restoration. However in the location where the nest boxes were built there are two other species that compete with Swift Parrots for nest boxes (Tree Martins and Common Starlings).
