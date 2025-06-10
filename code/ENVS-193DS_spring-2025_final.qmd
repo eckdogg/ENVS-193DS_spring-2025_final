@@ -31,10 +31,13 @@ nest_boxes <- read_csv(here("data", "occdist.csv"))
 
 # Problem 1. Research writing
 
-## a. In part 1, they used a Pearson's r correlation test. In part 2, they used a one-way ANOVA test.
+## a. 
+
+In part 1, they used a Pearson's r correlation test. In part 2, they used a one-way ANOVA test.
 
 ## b. 
 
+Two additional tests that could be included are a Tukey's HSD test and an eta-squared test. Tukey's HSD will tell us what groups are significantly different from each other. In this example there are 5 groups (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands). An eta-squared test will give us the effect size between groups. Effect size will tell us how large the difference is between groups. 
 
 # Problem 2. Data visualization
 
