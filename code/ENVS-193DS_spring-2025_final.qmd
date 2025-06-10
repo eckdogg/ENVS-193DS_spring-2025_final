@@ -23,6 +23,8 @@ library("tidyverse")
 library("here")
 library("janitor")
 library("tibble")
+library("DHARMa")
+library("MuMIn")
 
 sst <- read_csv(here("data", "SST_update2023.csv"))
 nest_boxes <- read_csv(here("data", "occdist.csv"))
@@ -154,5 +156,36 @@ model3 <- glm(sp ~ edge_distance, # formula
   data = nest_boxes_clean,
   family = "binomial" # data frame
 )
+```
+
+## f.
+
+```{r}
+plot(
+  simulateResiduals(model0)
+)
+
+plot(
+  simulateResiduals(model1)
+)
+
+plot(
+  simulateResiduals(model2)
+)
+
+plot(
+  simulateResiduals(model3)
+)
+```
+
+## g.
+
+```{r}
+AICc(model0,
+     model1, # best model:All predictors (saturated model)
+     model2,
+     model3) |>
+  # arranging output in descending order of AIC
+  arrange(AICc)
 ```
 
