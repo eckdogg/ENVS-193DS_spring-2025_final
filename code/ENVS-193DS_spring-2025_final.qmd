@@ -25,6 +25,7 @@ library("janitor")
 library("tibble")
 
 sst <- read_csv(here("data", "SST_update2023.csv"))
+nest_boxes <- read_csv(here("data", "occdist.csv"))
 ```
 
 
