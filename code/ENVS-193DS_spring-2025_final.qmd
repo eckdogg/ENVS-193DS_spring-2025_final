@@ -41,7 +41,7 @@ Two additional tests that could be included are a Tukey's HSD test and an eta-sq
 
 ## c.
 
-We rejected the null hypothesis that there is no difference in average nitrogen load (kg year<sup>-1</sup>) between sources (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (p = 0.02). We found a large difference ($\eta^2$ = effect size) between sources in average nitrogen load (one-way ANOVA results). On average urban land tended to have larger nitrogen loads than atmospheric deposition (Tukey's HSD results), fertilizer (Tukey's HSD results), fertilizer (Tukey's HSD results), wastewater treatment (Tukey's HSD results), and grasslands (Tukey's HSD results).
+There is a difference in average nitrogen load (kg year<sup>-1</sup>) between sources (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (p = 0.02). We found a large difference ($\eta^2$ = effect size) between sources in average nitrogen load (one-way ANOVA results). On average urban land tended to have larger nitrogen loads than atmospheric deposition (Tukey's HSD results), fertilizer (Tukey's HSD results), fertilizer (Tukey's HSD results), wastewater treatment (Tukey's HSD results), and grasslands (Tukey's HSD results).
 
 
 # Problem 2. Data visualization
@@ -102,6 +102,11 @@ ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = yea
 
 # Problem 3. Data analysis
 
+```{r}
+nest_boxes_clean <- janitor::clean_names(nest_boxes)
+```
+
+
 ## a.
 
 A 1 represents the presence of a species and a 0 represents the absence of a species. For example a 1 underneath the sp column represents the presence of a swift parrot in a nest box.
@@ -122,3 +127,32 @@ The two years compared in the study are 2016 and 2019, which were subsequent bre
 | 1            |  X     |       X                 | All predictors (saturated model) | 
 | 2            |  X     |                         | Season |   
 | 3            |       |       X                  | Distance to Forest Edge |  
+
+## e.
+
+```{r}
+# model 0: null model
+model0 <- glm(sp ~ 1, # formula
+  data = nest_boxes_clean,
+  family = "binomial" # data frame
+)
+
+# model 1: saturated model
+model1 <- glm(sp ~ edge_distance + season, # formula
+  data = nest_boxes_clean,
+  family = "binomial" # data frame
+)
+
+# model 2: season
+model2 <- glm(sp ~ season, # formula
+  data = nest_boxes_clean,
+  family = "binomial" # data frame
+)
+
+# model 3: edge distance
+model3 <- glm(sp ~ edge_distance, # formula
+  data = nest_boxes_clean,
+  family = "binomial" # data frame
+)
+```
+
