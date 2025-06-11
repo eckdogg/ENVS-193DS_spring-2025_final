@@ -26,6 +26,7 @@ library("tibble")
 library("DHARMa")
 library("MuMIn")
 library("ggeffects")
+library("scales")
 
 sst <- read_csv(here("data", "SST_update2023.csv"))
 nest_boxes <- read_csv(here("data", "occdist.csv"))
@@ -211,16 +212,21 @@ ggplot() +
                 y = predicted,
                 color = group),
             linewidth = 1) +  
-  scale_y_continuous("Swift parrot presence",
+  scale_y_continuous("Probability of box occupancy",
                    limits = c(0, 1),
-                   breaks = c(0, 1),
-                   labels = c("No", "Yes")) +
+                   breaks = seq(0, 1, by = 0.2),
+                   labels = label_percent(accuracy = 1)) +
   scale_color_manual(name = "Season",
                    values = c("2016" = "darkblue", "2019" = "lightgreen")) +
   scale_fill_manual(name = "Season",
                    values = c("2016" = "darkblue", "2019" = "lightgreen")) +
-  labs(x = "Distance from forest edge (m)") +
-  theme_minimal(base_size = 14)
+  labs(x = "Distance from the forest edge (m)",
+       title = "Swift Parrot") +
+  theme_minimal(base_size = 14) +
+  theme_minimal(base_size = 14) +
+theme(
+  panel.grid = element_blank())
+
 ```
 
 ## i.
@@ -234,4 +240,6 @@ Points represent observations of swift parrot presence at individual nest boxes 
 nest_boxes_clean$season <- as.factor(nest_boxes_clean$season)
 ggpredict(model1, terms = c("edge_distance [0]", "season"))
 ```
+
+## k.
 
