@@ -25,6 +25,7 @@ library("janitor")
 library("tibble")
 library("DHARMa")
 library("MuMIn")
+library("ggeffects")
 
 sst <- read_csv(here("data", "SST_update2023.csv"))
 nest_boxes <- read_csv(here("data", "occdist.csv"))
@@ -182,10 +183,47 @@ plot(
 
 ```{r}
 AICc(model0,
-     model1, # best model:All predictors (saturated model)
+     model1, # best model: All predictors (saturated model)
      model2,
      model3) |>
   # arranging output in descending order of AIC
   arrange(AICc)
+```
+
+## h.
+
+```{r}
+nest_boxes_clean$season <- as.factor(nest_boxes_clean$season)
+
+mod_preds <- ggpredict(model1, terms = c("edge_distance [all]", "season"))
+
+ggplot() +
+  geom_point(data = nest_boxes_clean,
+             aes(x = edge_distance,
+                 y = sp,  
+                 color = season),
+             size = 3,
+             alpha = 0.4) +
+  geom_ribbon(data = mod_preds,
+              aes(x = x,
+                  ymin = conf.low,
+                  ymax = conf.high,
+                  fill = group),
+              alpha = 0.4) +
+  geom_line(data = mod_preds,
+            aes(x = x,
+                y = predicted,
+                color = group),
+            linewidth = 1) +  
+  scale_y_continuous("Swift parrot presence",
+                   limits = c(0, 1),
+                   breaks = c(0, 1),
+                   labels = c("No", "Yes")) +
+  scale_color_manual(name = "Season",
+                   values = c("2016" = "darkblue", "2019" = "lightgreen")) +
+  scale_fill_manual(name = "Season",
+                   values = c("2016" = "darkblue", "2019" = "lightgreen")) +
+  labs(x = "Distance from forest edge (m)") +
+  theme_minimal(base_size = 14)
 ```
 
