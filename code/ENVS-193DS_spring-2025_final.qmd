@@ -244,3 +244,17 @@ ggpredict(model1, terms = c("edge_distance [0]", "season"))
 ## k.
 
 The predicted probability of a swift parrot occupying a nest box at 0 meters from the forest edge was about 50% in 2016 and 30% in 2019. The predicted probability of a swift parrot occupying a nest box at 900 meters from the forest edge was about 15% in 2016 and less than 10% in 2019 (based on the figure). Distance from forest edge and probability of swift parrot occupancy have a negative relationship (probability decreases as distance increases). This relationship can be explained by the fact that tree martins occupied the most nest boxes in the study and were most likely to use boxes far from forest edges. As a result swift parrots favored nest boxes near forest edges due to decreased competition.
+
+
+# Problem 4. Affective and exploratory visualizations
+
+## a.
+
+- My exploratory visualizations were created using code while my affective visualization was created using digital pencil. My exploratory visualizations were composed of points on a graph while my affective visualization is an artistic representation of box plots as buildings.
+- All of my visualizations have axes and axis labels. They also both have some sort of geometry on the plot itself.
+- My exploratory visualizations examined steps based on day of the week and maximum temperature while my affective visualization examined floors climbed on school days and non school days. There were not any obvious patterns in the exploratory visualizations because they were only based on four different data points. In my affective visualization, floors climbed were higher on non school days than on school days.
+- For my affective visualization, An recommended that I use windows on the buildings to represent something about my data. As a result, I drew windows with different colors that corresponded to a specific number of cumulative floors climbed.
+
+## b.
+
+I completed this component in workshop.
