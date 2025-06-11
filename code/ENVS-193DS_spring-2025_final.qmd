@@ -29,6 +29,7 @@ library("ggeffects")
 
 sst <- read_csv(here("data", "SST_update2023.csv"))
 nest_boxes <- read_csv(here("data", "occdist.csv"))
+nest_boxes_clean <- janitor::clean_names(nest_boxes)
 ```
 
 
@@ -104,11 +105,6 @@ ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = yea
 
 
 # Problem 3. Data analysis
-
-```{r}
-nest_boxes_clean <- janitor::clean_names(nest_boxes)
-```
-
 
 ## a.
 
