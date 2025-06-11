@@ -227,3 +227,11 @@ ggplot() +
 
 **Figure 1. Swift parrots are more likely to be found near forest edges.** Data from 'occdist' csv file (Stojanovic, Dejan et al. (2021)).
 Points represent observations of swift parrot presence at individual nest boxes at various distances from forest edges (m). Lines represent the predicted probability of swift parrot presence based on distance from forest edge. Colors represent seasons (blue: 2016, green: 2019).
+
+## j.
+
+```{r}
+nest_boxes_clean$season <- as.factor(nest_boxes_clean$season)
+ggpredict(model1, terms = c("edge_distance [0]", "season"))
+```
+
