@@ -180,7 +180,7 @@ plot(
 
 ```{r}
 AICc(model0,
-     model1, # best model: All predictors (saturated model)
+     model1, # best model: All predictors (saturated model). The predictors are distance from forest edge and season. The response variable is swift parrot occupancy.
      model2,
      model3) |>
   # arranging output in descending order of AIC
