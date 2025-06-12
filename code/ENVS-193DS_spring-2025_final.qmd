@@ -26,11 +26,11 @@ library("tibble")
 library("DHARMa")
 library("MuMIn")
 library("ggeffects")
-library("scales")
+library("scales") # reading in packages
 
-sst <- read_csv(here("data", "SST_update2023.csv"))
-nest_boxes <- read_csv(here("data", "occdist.csv"))
-nest_boxes_clean <- janitor::clean_names(nest_boxes)
+sst <- read_csv(here("data", "SST_update2023.csv")) # creating object with csv for problem 2
+nest_boxes <- read_csv(here("data", "occdist.csv")) # creating object with csv for problem 3
+nest_boxes_clean <- janitor::clean_names(nest_boxes) # cleaning the nest_boxes object
 ```
 
 
