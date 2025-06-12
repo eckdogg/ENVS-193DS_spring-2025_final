@@ -10,16 +10,16 @@ File structure:
 
 ```
 .
-├── ENVS-193DS_spring-2025_final.Rproj    # Rstudio project file
-├── README.md                       # README file explaining project       
+├── ENVS-193DS_spring-2025_final.Rproj  # Rstudio project file
+├── README.md  # README file explaining project       
 ├── .gitignore
-├── code                            # code folder
+├── code  # code folder
 │   ├── ENVS-193DS_spring-2025_final_files  # Additional Quarto files   
 │   ├── ENVS-193DS_spring-2025_final.html   # Rendered Quarto document
 │   ├── ENVS-193DS_spring-2025_final.qmd    # Final Quarto document
-└── data                            # data folder
-    └── occdist.csv                 # csv file containing problem 3 data
-    └── SST_update2023.csv          # csv file containing problem 2 data
+└── data  # data folder
+    └── occdist.csv  # csv file containing problem 3 data
+    └── SST_update2023.csv  # csv file containing problem 2 data
 ```
 
 All code is in the `code` folder. The code runs models, displays text, and visualizes data.
