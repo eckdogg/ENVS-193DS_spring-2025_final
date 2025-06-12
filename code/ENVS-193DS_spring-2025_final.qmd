@@ -1,7 +1,7 @@
 ---
 title: "ENVS193DS Final"
 author: Owen Eckweiler
-date: 6/10/2025
+date: 6/11/2025
 editor: source
 format:
   html:
@@ -46,7 +46,7 @@ Two additional tests that could be included are a Tukey's HSD test and an eta-sq
 
 ## c.
 
-There is a difference in average nitrogen load (kg year<sup>-1</sup>) between sources (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (p = 0.02). We found a large difference ($\eta^2$ = effect size) between sources in average nitrogen load (one-way ANOVA results). On average urban land tended to have larger nitrogen loads than atmospheric deposition (Tukey's HSD results), fertilizer (Tukey's HSD results), fertilizer (Tukey's HSD results), wastewater treatment (Tukey's HSD results), and grasslands (Tukey's HSD results).
+There is a difference in average nitrogen load (kg year<sup>-1</sup>) between sources (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (p = 0.02). We found a large difference ($\eta^2$ = effect size) between sources in average nitrogen load (one-way ANOVA results). On average urban land tended to have larger nitrogen loads than atmospheric deposition (Tukey's HSD results), fertilizer (Tukey's HSD results), wastewater treatment (Tukey's HSD results), and grasslands (Tukey's HSD results).
 
 
 # Problem 2. Data visualization
@@ -75,28 +75,28 @@ str(sst_clean) # displaying the data structure
 ggplot(sst_clean, aes(x = month, y = mean_monthly_sst, group = year, color = year)) + # using sst_clean data frame and setting values
   geom_line(size = 0.8) + # line geometry
   geom_point(size = 1.5) + # point geometry
-  labs( # setting axis labels
+  labs( # axis labels
     x = "Month", # x axis label
     y = "Mean monthly sea surface temperature (°C)", # y axis label
     color = "Year" # coloring based on year
   ) +
   scale_color_manual( # manually setting color scale
     values = c(
-      "2018" = "#deebf7", # color for 2018 (lightest blue)
+      "2018" = "#deebf7", # color for 2018 (lightest shade)
       "2019" = "#c6dbef", # color for 2019
       "2020" = "#9ecae1", # color for 2020
       "2021" = "#6baed6", # color for 2021
       "2022" = "#3182bd", # color for 2022
-      "2023" = "#08519c"  # color for 2023 (darkest blue)
+      "2023" = "#08519c"  # color for 2023 (darkest shade)
     )
   ) +
   scale_y_continuous(limits = c(12, 20)) + # only displaying values between 12 and 20 on y axis
   theme_minimal(base_size = 14) + # setting base font size to 14 points
   theme(
-    legend.position = c(0.00, 1.00),  # setting legend position
+    legend.position = c(0.00, 1.00),  # legend position
     legend.justification = c("left", "top"),  # pin legend to top-left
-    plot.margin = margin(t = 10, r = 10, b = 10, l = 30), # setting plot margin
-    axis.title.y = element_text(margin = margin(r = 10)), # setting margin for y axis
+    plot.margin = margin(t = 10, r = 10, b = 10, l = 30), # plot margin
+    axis.title.y = element_text(margin = margin(r = 10)), # margin for y axis
     panel.grid.major = element_blank(),  # removing major gridlines
     panel.grid.minor = element_blank(),  # removing minor gridlines
     panel.background = element_blank(),  # removing background
@@ -113,7 +113,7 @@ A 1 represents the presence of a species and a 0 represents the absence of a spe
 
 ## b.
 
-In this study, the nest boxes were built for Swift Parrot habitat restoration. However in the location where the nest boxes were built there are two other species that compete with Swift Parrots for nest boxes (Tree Martins and Common Starlings).
+In this study, the nest boxes were built for swift parrot habitat restoration. However in the location where the nest boxes were built there are two other species that compete with swift parrots for nest boxes (tree martins and common starlings).
 
 ## c.
 
@@ -133,26 +133,26 @@ The two years compared in the study are 2016 and 2019, which were subsequent bre
 ```{r}
 # model 0: null model
 model0 <- glm(sp ~ 1, # formula
-  data = nest_boxes_clean,
-  family = "binomial" # data frame
+  data = nest_boxes_clean, # data frame
+  family = "binomial" # family
 )
 
 # model 1: saturated model
 model1 <- glm(sp ~ edge_distance + season, # formula
-  data = nest_boxes_clean,
-  family = "binomial" # data frame
+  data = nest_boxes_clean, # data frame
+  family = "binomial" # family
 )
 
 # model 2: season
 model2 <- glm(sp ~ season, # formula
-  data = nest_boxes_clean,
-  family = "binomial" # data frame
+  data = nest_boxes_clean, # data frame
+  family = "binomial" # family
 )
 
 # model 3: edge distance
 model3 <- glm(sp ~ edge_distance, # formula
-  data = nest_boxes_clean,
-  family = "binomial" # data frame
+  data = nest_boxes_clean, # data frame
+  family = "binomial" # family
 )
 ```
 
@@ -161,19 +161,19 @@ model3 <- glm(sp ~ edge_distance, # formula
 ```{r}
 plot(
   simulateResiduals(model0)
-)
+) # Displaying diagnostic plots for model0
 
 plot(
   simulateResiduals(model1)
-)
+) # Displaying diagnostic plots for model1
 
 plot(
   simulateResiduals(model2)
-)
+) # Displaying diagnostic plots for model2
 
 plot(
   simulateResiduals(model3)
-)
+) # Displaying diagnostic plots for model3
 ```
 
 ## g.
@@ -190,55 +190,57 @@ AICc(model0,
 ## h.
 
 ```{r}
-nest_boxes_clean$season <- as.factor(nest_boxes_clean$season)
+nest_boxes_clean$season <- as.factor(nest_boxes_clean$season) # setting season variable as a factor
 
-mod_preds <- ggpredict(model1, terms = c("edge_distance [all]", "season"))
+mod_preds <- ggpredict(model1, terms = c("edge_distance [all]", "season")) # using ggpredict with edge distance and season as predictors
 
 ggplot() +
-  geom_point(data = nest_boxes_clean,
-             aes(x = edge_distance,
-                 y = sp,  
-                 color = season),
-             size = 3,
-             alpha = 0.4) +
-  geom_ribbon(data = mod_preds,
-              aes(x = x,
-                  ymin = conf.low,
-                  ymax = conf.high,
-                  fill = group),
-              alpha = 0.4) +
-  geom_line(data = mod_preds,
-            aes(x = x,
-                y = predicted,
-                color = group),
-            linewidth = 1) +  
-  scale_y_continuous("Probability of box occupancy",
-                   limits = c(0, 1),
-                   breaks = seq(0, 1, by = 0.2),
-                   labels = label_percent(accuracy = 1)) +
-  scale_color_manual(name = "Season",
+  geom_point(data = nest_boxes_clean, # data frame
+             aes(x = edge_distance, # x axis variable
+                 y = sp, # y axis variable
+                 color = season), # coloring based on season
+             size = 3, # size of points
+             alpha = 0.4) + # transparency of points
+  geom_ribbon(data = mod_preds, # data frame
+              aes(x = x, # x axis variable
+                  ymin = conf.low, # lower limit of confidence interval
+                  ymax = conf.high, # upper limit of CI
+                  fill = group), # coloring based on group
+              alpha = 0.4) + # transparency
+  geom_line(data = mod_preds, # data frame
+            aes(x = x, # x axis variable
+                y = predicted, # y axis variable
+                color = group), # coloring based on group
+            linewidth = 1) +  # width of line
+  scale_y_continuous("Probability of box occupancy", # y axis label
+                   limits = c(0, 1), # y axis limits
+                   breaks = seq(0, 1, by = 0.2), # increments
+                   labels = label_percent(accuracy = 1)) + # showing percentages on y axis
+  scale_color_manual(name = "Season", # line colors
                    values = c("2016" = "darkblue", "2019" = "lightgreen")) +
-  scale_fill_manual(name = "Season",
+  scale_fill_manual(name = "Season", # ribbon colors
                    values = c("2016" = "darkblue", "2019" = "lightgreen")) +
-  labs(x = "Distance from the forest edge (m)",
-       title = "Swift Parrot") +
-  theme_minimal(base_size = 14) +
-  theme_minimal(base_size = 14) +
+  labs(x = "Distance from the forest edge (m)", # x axis label
+       title = "Swift Parrot") + # title
+  theme_minimal(base_size = 14) + # minimal theme
 theme(
-  panel.grid = element_blank())
+  panel.grid = element_blank()) # removing gridlines
 
 ```
 
 ## i.
 
-**Figure 1. Swift parrots are more likely to be found near forest edges.** Data from 'occdist' csv file (Stojanovic, Dejan et al. (2021)).
-Points represent observations of swift parrot presence at individual nest boxes at various distances from forest edges (m). Points at 100% on the y axis represent swift parrot presence and points at 0% represent a lack of presence. Lines represent the predicted probability of swift parrot presence based on distance from forest edge. Colors represent seasons (blue: 2016, green: 2019).
+**Figure 1. Swift parrots are more likely to be found near forest edges.** Data from (Stojanovic, Dejan et al. (2021). Do nest boxes breed the target species or its competitors? A case study of a critically endangered bird [Dataset]. Dryad. https://doi.org/10.5061/dryad.83bk3j9sb).
+Points represent observations of swift parrot presence at individual nest boxes at various distances from forest edges (m). Points at 100% on the y axis represent swift parrot presence and points at 0% represent a lack of presence. Lines represent the predicted probability of swift parrot presence based on distance from forest edge. Ribbons represent the upper and lower limits of confidence intervals (CI = 95%). Colors represent seasons (blue: 2016, green: 2019).
 
 ## j.
 
 ```{r}
 nest_boxes_clean$season <- as.factor(nest_boxes_clean$season)
+
 ggpredict(model1, terms = c("edge_distance [0]", "season"))
+
+ggpredict(model1, terms = c("edge_distance [900]", "season"))
 ```
 
 ## k.
