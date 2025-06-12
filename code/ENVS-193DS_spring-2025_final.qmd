@@ -236,11 +236,11 @@ Points represent observations of swift parrot presence at individual nest boxes 
 ## j.
 
 ```{r}
-nest_boxes_clean$season <- as.factor(nest_boxes_clean$season)
+nest_boxes_clean$season <- as.factor(nest_boxes_clean$season) # setting season variable as a factor
 
-ggpredict(model1, terms = c("edge_distance [0]", "season"))
+ggpredict(model1, terms = c("edge_distance [0]", "season")) #predictions based on saturated model, edge distance = 0
 
-ggpredict(model1, terms = c("edge_distance [900]", "season"))
+ggpredict(model1, terms = c("edge_distance [900]", "season")) #predictions based on saturated model, edge distance = 900
 ```
 
 ## k.

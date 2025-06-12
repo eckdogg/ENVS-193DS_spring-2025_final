@@ -234,11 +234,11 @@ window.Quarto = {
 <pre><code># A tibble: 5 × 3
   year  month mean_monthly_sst
   &lt;fct&gt; &lt;ord&gt;            &lt;dbl&gt;
-1 2019  Mar               13.6
-2 2020  Jul               17  
-3 2018  Nov               17.9
-4 2021  May               14.4
-5 2020  Oct               19  </code></pre>
+1 2018  Jul               18.2
+2 2020  Dec               14.5
+3 2022  Aug               17.5
+4 2020  Jul               17  
+5 2022  Mar               13.3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sst_clean) <span class="co"># displaying the data structure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -502,9 +502,9 @@ model0  1 238.8318</code></pre>
 <section id="j." class="level2">
 <h2 class="anchored" data-anchor-id="j.">j.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nest_boxes_clean<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(nest_boxes_clean<span class="sc">$</span>season)</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nest_boxes_clean<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(nest_boxes_clean<span class="sc">$</span>season) <span class="co"># setting season variable as a factor</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpredict</span>(model1, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"edge_distance [0]"</span>, <span class="st">"season"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpredict</span>(model1, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"edge_distance [0]"</span>, <span class="st">"season"</span>)) <span class="co">#predictions based on saturated model, edge distance = 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Predicted probabilities of sp
 
@@ -520,7 +520,7 @@ edge_distance | Predicted |     95% CI
 --------------------------------------
             0 |      0.30 | 0.18, 0.44</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpredict</span>(model1, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"edge_distance [900]"</span>, <span class="st">"season"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpredict</span>(model1, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"edge_distance [900]"</span>, <span class="st">"season"</span>)) <span class="co">#predictions based on saturated model, edge distance = 900</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Predicted probabilities of sp
 
