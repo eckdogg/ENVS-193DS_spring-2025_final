@@ -230,7 +230,7 @@ theme(
 
 ## i.
 
-**Figure 1. Swift parrots are more likely to be found near forest edges.** Data from (Stojanovic, Dejan et al. (2021). Do nest boxes breed the target species or its competitors? A case study of a critically endangered bird [Dataset]. Dryad. https://doi.org/10.5061/dryad.83bk3j9sb).
+**Figure 1. Swift parrots are more likely to be found near forest edges.** Data from (Stojanovic, Dejan et al. (2021). https://doi.org/10.5061/dryad.83bk3j9sb).
 Points represent observations of swift parrot presence at individual nest boxes at various distances from forest edges (m). Points at 100% on the y axis represent swift parrot presence and points at 0% represent a lack of presence. Lines represent the predicted probability of swift parrot presence based on distance from forest edge. Ribbons represent the upper and lower limits of confidence intervals (CI = 95%). Colors represent seasons (blue: 2016, green: 2019).
 
 ## j.
